@@ -20,6 +20,7 @@
 
         <section class="mx-auto" style="max-width: 650px;">
 
+            <asp:Label ID="UploadedFileMessage" runat="server" CssClass="text-bg-success"></asp:Label>
             <div class="border rounded-3 p-4 p-md-5">
 
                 <h2 class="h4 fw-semibold mb-2">Upload your CSV file
@@ -32,14 +33,15 @@
 
                 <div class="mb-4">
 
-                    <label for="csvFile" class="form-label fw-semibold">
+                    <label for="CsvFileUpload" class="form-label fw-semibold">
                         CSV file
                    
                     </label>
                     <%-- Native component (alias to HTML input file) file transfer in ASP.NET Web Forms --%>
                     <asp:FileUpload
                         ID="CsvFileUpload"
-                        runat="server" />
+                        runat="server"
+                        CssClass="form-control form-control-lg"/>
 
                     <div class="form-text mt-2">
                         Accepted format: .csv
@@ -49,7 +51,7 @@
                 </div>
 
                 <%-- Native button (alias to HTML button) in ASP.NET Web Forms --%>
-                <asp:Button ID="AnalyzeBtn" runat="server" Text="Analyze my CSV file" OnClick="AnalyzeBtn_Click" />
+                <asp:Button ID="AnalyzeBtn" runat="server" Text="Analyze my CSV file" OnClick="AnalyzeBtn_Click" CssClass="btn btn-primary btn-lg w-100" />
 
             </div>
 

@@ -36,14 +36,10 @@
                         CSV file
                    
                     </label>
-
-                    <input
-                        type="file"
-                        id="csvFile"
-                        name="csvFile"
-                        class="form-control form-control-lg"
-                        accept=".csv"
-                        required>
+                    <%-- Native component (alias to HTML input file) file transfer in ASP.NET Web Forms --%>
+                    <asp:FileUpload
+                        ID="CsvFileUpload"
+                        runat="server" />
 
                     <div class="form-text mt-2">
                         Accepted format: .csv
@@ -52,10 +48,8 @@
 
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-lg w-100">
-                    Analyze my CSV file
-               
-                </button>
+                <%-- Native button (alias to HTML button) in ASP.NET Web Forms --%>
+                <asp:Button ID="AnalyzeBtn" runat="server" Text="Analyze my CSV file" OnClick="AnalyzeBtn_Click" />
 
             </div>
 

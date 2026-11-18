@@ -18,9 +18,9 @@
 
         </section>
 
-        <section class="mx-auto" style="max-width: 650px;">
-
-            <asp:Label ID="UploadedFileMessage" runat="server" CssClass="text-bg-success"></asp:Label>
+        <section>
+            <asp:Label ID="SuccessMessage" runat="server" CssClass="alert alert-success" Visible="false">Your CSV file is ready for transfer !</asp:Label>
+            <asp:Label ID="ErrorMessage" runat="server" CssClass="alert alert-danger" Visible="false"></asp:Label>
             <div class="border rounded-3 p-4 p-md-5">
 
                 <h2 class="h4 fw-semibold mb-2">Upload your CSV file

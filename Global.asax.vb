@@ -7,5 +7,7 @@ Public Class Global_asax
         ' Se déclenche lorsque l'application est démarrée
         RouteConfig.RegisterRoutes(RouteTable.Routes)
         BundleConfig.RegisterBundles(BundleTable.Bundles)
+        'Load .env content when app is up
+        DotNetEnv.Env.Load(System.IO.Path.Combine(HttpRuntime.AppDomainAppPath, ".env"))
     End Sub
 End Class

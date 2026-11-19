@@ -57,4 +57,13 @@ Partial Public Class _Default
     '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents AnalyzeBtn As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Contrôle TableHistory.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents TableHistory As Global.System.Web.UI.WebControls.Table
 End Class

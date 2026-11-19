@@ -2,7 +2,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main class="container" aria-labelledby="title">
-        <section class="text-center py-5 row border">
+        <section class="text-center py-5 row">
 
             <span class="text-primary fw-semibold text-uppercase small">CSV validation tool
             </span>
@@ -51,7 +51,7 @@
                    
                 </div>
             </div>
-            <div class="col border border-success">
+            <div class="col">
                 <h2 class="h4 fw-semibold mb-2">Historique des analyses</h2>
                 <div class="overflow-scroll" style="height: 400px">
                     <asp:Table ID="TableHistory" runat="server" CssClass="table overflow-scroll">

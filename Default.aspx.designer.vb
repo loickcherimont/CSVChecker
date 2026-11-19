@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class _Default
 
     '''<summary>
+    '''Contrôle DatabaseInfo.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents DatabaseInfo As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Contrôle SuccessMessage.
     '''</summary>
     '''<remarks>

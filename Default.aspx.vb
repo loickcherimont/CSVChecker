@@ -6,53 +6,78 @@ Public Class _Default
     Inherits Page
 
     Private EXPECTED_HEADER() As String = {"Identifiant", "Equipement", "NumeroSerie", "Proprietaire", "DateAcquisition"}
+    Private AnalysisHistoryR As AnalysisHistoryRepository
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
-        Dim PGUsername As String = Environment.GetEnvironmentVariable("PGUSERNAME")
-        Dim PGPassword As String = Environment.GetEnvironmentVariable("PGPASSWORD")
-        Dim newDataConnection As New DatabaseConnection("localhost", 5432, "csvchecker", PGUsername, PGPassword)
-        DatabaseInfo.Text = newDataConnection.Status
-        DatabaseInfo.Visible = True
+        If Not IsPostBack Then
+            AnalysisHistoryR = New AnalysisHistoryRepository()
+            updateTableHistory()
+        End If
     End Sub
 
     Protected Sub AnalyzeBtn_Click(ByVal sender As Object, ByVal e As EventArgs)
+        AnalysisHistoryR = New AnalysisHistoryRepository()
+        Dim newAnalysis As AnalysisHistory
         ErrorMessage.Text = String.Empty
         ErrorMessage.Visible = False
         SuccessMessage.Visible = False
 
         If Not CsvFileUpload.HasFile Then
-            ErrorMessage.Text = "Please provide a file."
+            newAnalysis = AnalysisHistoryR.Save(
+                New AnalysisHistory(CsvFileUpload.FileName, DateTime.Now, AnalysisStatus.NOT_COMPLIANT, "Aucun fichier n'est fourni")
+            )
+            ErrorMessage.Text = newAnalysis.Details
             ErrorMessage.Visible = True
+            updateTableHistory()
             Return
         End If
 
         If isNotCsvFile(CsvFileUpload) Then
-            ErrorMessage.Text = "Only CSV file are allowed."
+            newAnalysis = AnalysisHistoryR.Save(
+                New AnalysisHistory(CsvFileUpload.FileName, DateTime.Now, AnalysisStatus.NOT_COMPLIANT, "Type de fichier non autorisé")
+            )
+            ErrorMessage.Text = newAnalysis.Details
             ErrorMessage.Visible = True
+            updateTableHistory()
             Return
         End If
 
         If isCsvFileEmpty(CsvFileUpload) Then
-            ErrorMessage.Text = "CSV file cannot be empty."
+            newAnalysis = AnalysisHistoryR.Save(
+                New AnalysisHistory(CsvFileUpload.FileName, DateTime.Now, AnalysisStatus.NOT_COMPLIANT, "CSV fourni est vide")
+            )
+            ErrorMessage.Text = newAnalysis.Details
             ErrorMessage.Visible = True
+            updateTableHistory()
             Return
         End If
 
         If Not containsTheExpectedHeader(CsvFileUpload) Then
-            ErrorMessage.Text = "The CSV file must contains the following header at the line 1: " & Join(EXPECTED_HEADER, ";")
+            newAnalysis = AnalysisHistoryR.Save(
+                New AnalysisHistory(CsvFileUpload.FileName, DateTime.Now, AnalysisStatus.NOT_COMPLIANT, "Fichier ne contient pas l'en-tête attendue")
+            )
+            ErrorMessage.Text = newAnalysis.Details
             ErrorMessage.Visible = True
+            updateTableHistory()
             Return
         End If
 
         If Not isOkForNumberOfColumns(CsvFileUpload) Then
-            ErrorMessage.Text = "The number of columns in the CSV file is not correct."
+            newAnalysis = AnalysisHistoryR.Save(
+                New AnalysisHistory(CsvFileUpload.FileName, DateTime.Now, AnalysisStatus.NOT_COMPLIANT, "Nombre de colonnes du fichier non conforme")
+            )
+            ErrorMessage.Text = newAnalysis.Details
             ErrorMessage.Visible = True
+            updateTableHistory()
             Return
         End If
 
-        SuccessMessage.Text = "File uploaded with success"
+        newAnalysis = AnalysisHistoryR.Save(
+                New AnalysisHistory(CsvFileUpload.FileName, DateTime.Now, AnalysisStatus.COMPLIANT, "CSV analysé avec succès")
+            )
+        SuccessMessage.Text = newAnalysis.Details
         SuccessMessage.Visible = True
-
+        updateTableHistory()
     End Sub
 
     Protected Function isNotCsvFile(ByVal fileToUpload As FileUpload) As Boolean
@@ -101,4 +126,32 @@ Public Class _Default
         End Using
         Return True
     End Function
+
+    Protected Sub updateTableHistory()
+        For Each analysisHistory In AnalysisHistoryR.FindAll()
+            Dim row As New TableRow()
+
+            Dim cellId As New TableCell()
+            cellId.Text = analysisHistory.Id.ToString
+            row.Cells.Add(cellId)
+
+            Dim cellFileName As New TableCell()
+            cellFileName.Text = analysisHistory.FileName
+            row.Cells.Add(cellFileName)
+
+            Dim cellAnalysisDate As New TableCell()
+            cellAnalysisDate.Text = analysisHistory.AnalysisDate.ToString
+            row.Cells.Add(cellAnalysisDate)
+
+            Dim cellStatus As New TableCell()
+            cellStatus.Text = analysisHistory.Status.ToString
+            row.Cells.Add(cellStatus)
+
+            Dim cellDetails As New TableCell()
+            cellDetails.Text = analysisHistory.Details
+            row.Cells.Add(cellDetails)
+
+            TableHistory.Rows.Add(row)
+        Next
+    End Sub
 End Class

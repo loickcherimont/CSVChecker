@@ -1,5 +1,6 @@
 ﻿Imports System.Diagnostics.Eventing
 Imports System.IO
+Imports System.Data.SqlClient
 
 Public Class _Default
     Inherits Page
@@ -7,7 +8,11 @@ Public Class _Default
     Private EXPECTED_HEADER() As String = {"Identifiant", "Equipement", "NumeroSerie", "Proprietaire", "DateAcquisition"}
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
-
+        Dim PGUsername As String = Environment.GetEnvironmentVariable("PGUSERNAME")
+        Dim PGPassword As String = Environment.GetEnvironmentVariable("PGPASSWORD")
+        Dim newDataConnection As New DatabaseConnection("localhost", 5432, "csvchecker", PGUsername, PGPassword)
+        DatabaseInfo.Text = newDataConnection.Status
+        DatabaseInfo.Visible = True
     End Sub
 
     Protected Sub AnalyzeBtn_Click(ByVal sender As Object, ByVal e As EventArgs)

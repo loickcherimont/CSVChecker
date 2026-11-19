@@ -2,6 +2,8 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
+    <asp:Label ID="DatabaseInfo" runat="server" Visible="false" CssClass="alert alert-info"></asp:Label>
+
     <main class="container py-5" aria-labelledby="title">
         <section class="text-center py-5">
 

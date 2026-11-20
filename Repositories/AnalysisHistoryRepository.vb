@@ -17,7 +17,8 @@ Public Class AnalysisHistoryRepository
         Using connection As NpgsqlConnection = DBConnection.GetConnection()
             connection.Open()
             'Cast the status from Analysis object to adapt to custom STATUS_TYPE from PostgreSQL
-            Dim cmd = New NpgsqlCommand("INSERT INTO analysis_history(file_name, analysis_date, status, details) VALUES(@FileName, @AnalysisDate, CAST(@Status AS STATUS_TYPE), @Details)", connection)
+            Dim cmd = New NpgsqlCommand("INSERT INTO analysis_history(id, file_name, analysis_date, status, details) VALUES(@Id, @FileName, @AnalysisDate, CAST(@Status AS STATUS_TYPE), @Details)", connection)
+            cmd.Parameters.Add("@Id", NpgsqlTypes.NpgsqlDbType.Uuid).Value = analysis.Id
             cmd.Parameters.Add("@FileName", NpgsqlTypes.NpgsqlDbType.Varchar).Value = analysis.FileName
             cmd.Parameters.Add("@AnalysisDate", NpgsqlTypes.NpgsqlDbType.Timestamp).Value = analysis.AnalysisDate
             cmd.Parameters.Add("@Status", NpgsqlTypes.NpgsqlDbType.Varchar).Value = analysis.Status.ToString()
@@ -38,7 +39,7 @@ Public Class AnalysisHistoryRepository
 
                 'Convert the string from db in AnalysisStatus Enum for the 4th column
 
-                Dim analysis As New AnalysisHistory(rdr.GetInt32(0), rdr.GetString(1), rdr.GetDateTime(2), CType([Enum].Parse(GetType(AnalysisStatus), rdr.GetString(3)), AnalysisStatus), rdr.GetString(4))
+                Dim analysis As New AnalysisHistory(rdr.GetGuid(0), rdr.GetString(1), rdr.GetDateTime(2), CType([Enum].Parse(GetType(AnalysisStatus), rdr.GetString(3)), AnalysisStatus), rdr.GetString(4))
                 analysisList.Add(analysis)
             End While
         End Using

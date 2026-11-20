@@ -66,7 +66,7 @@ Public Class _Default
             row.Cells.Add(cellAnalysisDate)
 
             Dim cellStatus As New TableCell()
-            cellStatus.Text = analysisHistory.Status.ToString
+            cellStatus.Text = If(analysisHistory.Status = AnalysisStatus.COMPLIANT, "CONFORME", "NON CONFORME")
             row.Cells.Add(cellStatus)
 
             Dim cellDetails As New TableCell()

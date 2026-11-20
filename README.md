@@ -14,8 +14,7 @@ CSV Checker is a web application designed to validate CSV files before a transfe
 - **ASP.NET** — Provides the web application environment and handles communication between the interface and backend.
 
 **Database:**
-- **SQL Server** — Stores CSV analysis history and validation results.
-- **T-SQL** — Handles database queries and data operations.
+- **PostgreSQL** - Manage and store data
 
 **Automation & Environment:**
 - **Windows PowerShell** — Automates file operations (folder management, archiving, and file transfers).
@@ -27,11 +26,40 @@ CSV Checker is a web application designed to validate CSV files before a transfe
 - **Git** — Version control.
 - **GitHub** — Source code hosting and project management.
 
+## Data
+
+The app uses table of data `analysis_history` with the following informations :
+
+| Attribute | Conceptual Type | Description |
+|---|---|---|
+| id | UUID | Unique identifier |
+| file_name | String | Name of the analyzed file |
+| date | DateTime | Date and time of the analysis |
+| status | Enum | COMPLIANT / NON_COMPLIANT |
+| detail | Text | Explanatory message or error encountered |
+
+You can consult this script at: [Database/schema.sql](./Database/schema.sql "Link to SQL file")
+
+## Prerequisites
+
+- PostgreSQL must be installed
+
 ## ⚙️ Setup
 
-*To be developed.*
+*To be documented.*
 
-Instructions for installing prerequisites, configuring SQL Server, and running the application locally will be provided here.
+1. Open a terminal and create the database `csvchecker` with PostgreSQL
+2. Create the table using the schema above
+3. Add a `.env`file at the root of the project containing database connection informations
+
+```bash
+# .env
+
+PGUSERNAME=[YOUR_PGUSERNAME]
+PGPASSWORD=[YOUR_PGPASSWORD]
+```
+
+4. Run the application using your dev environment and you have access to the main part on https://localhost:44377/
 
 ## ▶️ Usage
 

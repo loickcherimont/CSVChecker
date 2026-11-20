@@ -14,7 +14,7 @@
         <section class="mb-4">
             <h3 class="h5 fw-semibold text-primary">01. Upload your file</h3>
             <p>
-                Select and upload your file. Only CSV format is accepted.
+                Select and upload your file. Only CSV format is accepted, with the header <code>Identifiant;Equipement;NumeroSerie;Proprietaire;DateAcquisition</code>
             </p>
         </section>
 

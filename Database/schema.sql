@@ -2,7 +2,7 @@ CREATE TYPE STATUS_TYPE AS ENUM('COMPLIANT', 'NOT_COMPLIANT');
 
 CREATE TABLE analysis_history (
 	id UUID PRIMARY KEY,
-	file_name VARCHAR(255) NOT NULL,
+	file_name VARCHAR(255) NOT NULL DEFAULT 'Aucun fichier fourni',
 	analysis_date TIMESTAMP NOT NULL,
 	status STATUS_TYPE NOT NULL,
 	details TEXT NOT NULL

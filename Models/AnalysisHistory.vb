@@ -4,7 +4,7 @@
 End Enum
 
 Public Class AnalysisHistory
-    Public Property Id As Integer
+    Public Property Id As Guid
     Public Property FileName As String
     Public Property AnalysisDate As DateTime
 
@@ -12,12 +12,12 @@ Public Class AnalysisHistory
 
     Public Property Details As String
 
-    Public Sub New(Id As Integer,
-               FileName As String,
-               AnalysisDate As DateTime,
-               Status As AnalysisStatus,
-               Details As String)
-
+    Public Sub New(
+           Id As Guid,
+           FileName As String,
+           AnalysisDate As DateTime,
+           Status As AnalysisStatus,
+           Details As String)
         Me.Id = Id
         Me.FileName = FileName
         Me.AnalysisDate = AnalysisDate
@@ -31,6 +31,7 @@ Public Class AnalysisHistory
            AnalysisDate As DateTime,
            Status As AnalysisStatus,
            Details As String)
+        Me.Id = Guid.NewGuid()
         Me.FileName = FileName
         Me.AnalysisDate = AnalysisDate
         Me.Status = Status

@@ -1,6 +1,46 @@
 ﻿<%@ Page Title="CSV Checker" Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.vb" Inherits="CSVChecker._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+
+    <style>
+        .csv-checker-history {
+            max-height: 25rem;
+            overflow: auto;
+        }
+
+        .csv-checker-table > thead th {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            background-color: var(--bs-tertiary-bg, #f8f9fa);
+        }
+
+        .csv-checker-table td:first-child {
+            max-width: 12rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-family: var(--bs-font-monospace);
+            font-size: 0.875rem;
+        }
+
+        .csv-checker-table td:nth-child(2) {
+            max-width: 14rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .csv-checker-table td:nth-child(4) {
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .csv-checker-table td:last-child {
+            min-width: 16rem;
+        }
+    </style>
+
     <main class="container" aria-labelledby="title">
         <section class="text-center py-5 row">
 
@@ -19,50 +59,54 @@
 
         </section>
 
-        <section class="row">
+        <section class="row g-4 align-items-stretch" aria-label="CSV checker tools">
+            <div class="col-12 col-xl-5">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4 p-lg-5">
+                        <h2 class="h4 fw-semibold mb-2">Upload your CSV file
+                        </h2>
 
-            <div class="rounded-3 p-4 p-md-5 col border">
+                        <p class="text-muted mb-4">
+                            Select the file you want to analyze.
+                        </p>
 
-                <h2 class="h4 fw-semibold mb-2">Upload your CSV file
-                </h2>
-
-                <p class="text-muted mb-4">
-                    Select the file you want to analyze.
-               
-                </p>
-
-                <%--<div class="mb-4">--%>
-
-                <div class="input-group">
-                    <%--</div>--%>
-                    <%-- Native component (alias to HTML input file) file transfer in ASP.NET Web Forms --%>
-                    <asp:FileUpload
-                        ID="CsvFileUpload"
-                        runat="server"
-                        CssClass="form-control" />
-                    <%-- Native button (alias to HTML button) in ASP.NET Web Forms --%>
-                    <asp:Button ID="AnalyzeBtn" runat="server" Text="Analyze my CSV file" OnClick="AnalyzeBtn_Click" CssClass="btn btn-outline-primary rounded-end" />
-
-
-
-                </div>
-                <div class="form-text mt-2">
-                    Accepted format: .csv
-                   
+                        <div class="row g-2 align-items-end">
+                            <div class="col-12 col-sm-8">
+                                <asp:FileUpload
+                                    ID="CsvFileUpload"
+                                    runat="server"
+                                    CssClass="form-control mw-100"
+                                    aria-describedby="csvFileHelp" />
+                            </div>
+                            <div class="col-12 col-sm-4 d-grid">
+                                <asp:Button ID="AnalyzeBtn" runat="server" Text="Analyze my CSV file" OnClick="AnalyzeBtn_Click" CssClass="btn btn-primary w-100" />
+                            </div>
+                        </div>
+                        <div id="csvFileHelp" class="form-text mt-2">
+                            Accepted format: .csv
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col">
-                <h2 class="h4 fw-semibold mb-2">Historique des analyses</h2>
-                <div class="overflow-scroll" style="height: 400px">
-                    <asp:Table ID="TableHistory" runat="server" CssClass="table overflow-scroll">
-                        <asp:TableRow TableSection="TableHeader">
-                            <asp:TableHeaderCell Scope="Column">ID</asp:TableHeaderCell>
-                            <asp:TableHeaderCell Scope="Column">Nom du fichier</asp:TableHeaderCell>
-                            <asp:TableHeaderCell Scope="Column">Date d'analyse</asp:TableHeaderCell>
-                            <asp:TableHeaderCell Scope="Column">Statut</asp:TableHeaderCell>
-                            <asp:TableHeaderCell Scope="Column">Détails</asp:TableHeaderCell>
-                        </asp:TableRow>
-                    </asp:Table>
+
+            <div class="col-12 col-xl-7">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-white border-0 px-4 px-lg-5 pt-4 pb-0">
+                        <h2 class="h5 fw-semibold mb-0">Historique des analyses</h2>
+                    </div>
+                    <div class="card-body p-4 p-lg-5">
+                        <div class="table-responsive csv-checker-history">
+                            <asp:Table ID="TableHistory" runat="server" CssClass="table table-hover table-striped align-middle mb-0 csv-checker-table">
+                                <asp:TableRow TableSection="TableHeader">
+                                    <asp:TableHeaderCell Scope="Column" CssClass="text-nowrap">ID</asp:TableHeaderCell>
+                                    <asp:TableHeaderCell Scope="Column" CssClass="text-nowrap">Nom du fichier</asp:TableHeaderCell>
+                                    <asp:TableHeaderCell Scope="Column" CssClass="text-nowrap">Date d'analyse</asp:TableHeaderCell>
+                                    <asp:TableHeaderCell Scope="Column" CssClass="text-nowrap">Statut</asp:TableHeaderCell>
+                                    <asp:TableHeaderCell Scope="Column" CssClass="text-nowrap">Détails</asp:TableHeaderCell>
+                                </asp:TableRow>
+                            </asp:Table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

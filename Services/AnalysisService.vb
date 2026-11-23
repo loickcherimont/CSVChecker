@@ -12,7 +12,7 @@ Public Class AnalysisService
 
     Public Sub VerifyIfFileProvided(ByVal file As FileUpload)
         If Not file.HasFile Then
-            Dim createRequest As New CreateAnalysisRequestDTO(file.FileName, DateTime.Now, AnalysisStatus.NOT_COMPLIANT, "Aucun fichier n'a été fourni.")
+            Dim createRequest As New CreateAnalysisRequestDTO("Aucun fichier", DateTime.Now, AnalysisStatus.NOT_COMPLIANT, "Aucun fichier n'a été fourni.")
             AnalysisHistoryS.Create(createRequest)
             Throw New ArgumentException(createRequest.Details)
         End If

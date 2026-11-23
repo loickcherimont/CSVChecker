@@ -42,12 +42,12 @@
             <div class="container">
                 <a class="navbar-brand" runat="server" href="~/">CSV Checker</a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Activer/désactiver la navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+                    aria-expanded="false" aria-label="Afficher/masquer la navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">Checker</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">Vérificateur</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Docs">Documentation</a></li>
                     </ul>
                 </div>
@@ -57,7 +57,7 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
-            <footer>
+            <footer class="d-flex justify-content-center">
                 <p>Copyright &copy; <%: DateTime.Now.Year %> | Loick CHERIMONT | Tous droits réservés.</p>
             </footer>
         </div>

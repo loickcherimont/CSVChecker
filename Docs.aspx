@@ -8,37 +8,37 @@
         <h2 id="title" class="display-5 fw-bold mb-3"><%: Title %></h2>
 
         <p class="text-muted fs-5 mb-5">
-            Discover how CSV Checker validates and prepares your files for transfer.
+            Découvrez comment CSV Checker valide et prépare vos fichiers pour le transfert.
         </p>
 
         <section class="mb-4">
-            <h3 class="h5 fw-semibold text-primary">01. Upload your file</h3>
+            <h3 class="h5 fw-semibold text-primary">01. Téléversez votre fichier</h3>
             <p>
-                Select and upload your file. Only CSV format is accepted, with the header <code>Identifiant;Equipement;NumeroSerie;Proprietaire;DateAcquisition</code>
+                Sélectionnez et téléversez votre fichier. Seul le format CSV est accepté, avec l'en-tête <code>Identifiant;Equipement;NumeroSerie;Proprietaire;DateAcquisition</code>
             </p>
         </section>
 
         <section class="mb-4">
-            <h3 class="h5 fw-semibold text-primary">02. File analysis</h3>
+            <h3 class="h5 fw-semibold text-primary">02. Analyse du fichier</h3>
             <p>
-                CSV Checker analyzes the file structure and checks data consistency
-                against predefined validation rules.
+                CSV Checker analyse la structure du fichier et vérifie la cohérence des données
+                par rapport aux règles de validation prédéfinies.
             </p>
         </section>
 
         <section class="mb-4">
-            <h3 class="h5 fw-semibold text-primary">03. Validation result</h3>
+            <h3 class="h5 fw-semibold text-primary">03. Résultat de la validation</h3>
             <p>
-                Your file is classified as compliant or non-compliant.
-                If errors are detected, they are reported so you can correct them.
+                Votre fichier est classé comme conforme ou non conforme.
+                Si des erreurs sont détectées, elles sont signalées afin que vous puissiez les corriger.
             </p>
         </section>
 
         <section class="mb-4">
-            <h3 class="h5 fw-semibold text-primary">04. File ready for transfer</h3>
+            <h3 class="h5 fw-semibold text-primary">04. Fichier prêt pour le transfert</h3>
             <p>
-                Once validated, your compliant CSV file is ready to be transferred
-                to the target application.
+                Une fois validé, votre fichier CSV conforme est prêt à être transféré
+                vers l'application cible.
             </p>
         </section>
 

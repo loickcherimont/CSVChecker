@@ -16,13 +16,9 @@ CSV Checker is a web application designed to validate CSV files before a transfe
 **Database:**
 - **PostgreSQL** - Manage and store data
 
-**Automation & Environment:**
-- **Windows PowerShell** — Automates file operations (folder management, archiving, and file transfers).
-- **Power Automate Desktop** — (Supports workflow automation and process orchestration).
-- **Windows 11** — Operating system environment.
-- (**CMD** — Command-line environment for executing commands and managing the development environment.)
-
 **DevOps:**
+- **Windows PowerShell** — Commandline tool
+- **Windows 11** — Operating system environment.
 - **Git** — Version control.
 - **GitHub** — Source code hosting and project management.
 
@@ -54,7 +50,7 @@ You can consult this script at: [Database/schema.sql](./Database/schema.sql "Lin
 ### Windows and PowerShell
 
 
-3. Add a `.env`file at the root of the project containing database connection informations
+3. Add a `.env` file at the root of the project containing database connection informations
 
 ```powershell
 # .env
@@ -79,9 +75,7 @@ PGPASSWORD=[YOUR_PGPASSWORD]
 
 ## ▶️ Usage
 
-*To be documented.*
-
-Screenshots and instructions demonstrating CSV file upload, validation results, and file processing will be added here.
+Verify the docs part when the application is started.
 
 --
 

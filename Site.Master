@@ -57,7 +57,7 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
-            <footer>
+            <footer class="d-flex justify-content-center">
                 <p>Copyright &copy; <%: DateTime.Now.Year %> | Loick CHERIMONT | Tous droits réservés.</p>
             </footer>
         </div>

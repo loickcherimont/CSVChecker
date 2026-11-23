@@ -1,47 +1,9 @@
 ﻿<%@ Page Title="CSV Checker" Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.vb" Inherits="CSVChecker._Default" %>
 
+
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <style>
-        .csv-checker-history {
-            max-height: 25rem;
-            overflow: auto;
-        }
-
-        .csv-checker-table > thead th {
-            position: sticky;
-            top: 0;
-            z-index: 1;
-            background-color: var(--bs-tertiary-bg, #f8f9fa);
-        }
-
-        .csv-checker-table td:first-child {
-            max-width: 12rem;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            font-family: var(--bs-font-monospace);
-            font-size: 0.875rem;
-        }
-
-        .csv-checker-table td:nth-child(2) {
-            max-width: 14rem;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .csv-checker-table td:nth-child(4) {
-            text-align: center;
-            font-weight: 600;
-        }
-
-        .csv-checker-table td:last-child {
-            min-width: 16rem;
-        }
-    </style>
-
-    <main class="container" aria-labelledby="title">
+    <main class="container d-lg-grid gap-3" aria-labelledby="title">
         <section class="text-center py-5 row">
 
             <span class="text-primary fw-semibold text-uppercase small">Outil de validation CSV
@@ -59,8 +21,8 @@
 
         </section>
 
-        <section class="row g-4 align-items-stretch" aria-label="Outils de vérification CSV">
-            <div class="col-12 col-xl-6">
+        <section class="row g-5 align-items-stretch" aria-label="Outils de vérification CSV">
+            <div class="col">
                 <section class="h-100">
                     <h2 class="h4 fw-semibold mb-2">Téléversez votre fichier CSV
                     </h2>
@@ -76,7 +38,7 @@
                                 runat="server"
                                 CssClass="form-control mw-100"
                                 aria-describedby="csvFileHelp"
-                                required="true"/>
+                                required="true" />
                         </div>
                         <div class="col-12 col-sm-4 d-grid">
                             <asp:Button ID="AnalyzeBtn" runat="server" Text="Analyser le CSV" OnClick="AnalyzeBtn_Click" CssClass="btn btn-primary w-100" />
@@ -87,11 +49,13 @@
                     </div>
                 </section>
             </div>
+        </section>
 
-            <div class="col-12 col-xl-6">
+        <section class="row mt-3" aria-label="Historique d'analyse CSV">
+            <div>
                 <section class="h-100">
                     <h2 class="h5 fw-semibold mb-3">Historique des analyses</h2>
-                    <div class="table-responsive csv-checker-history">
+                    <div class="table-responsive">
                         <asp:Table ID="TableHistory" runat="server" CssClass="table table-hover table-striped align-middle mb-0 csv-checker-table">
                             <asp:TableRow TableSection="TableHeader">
                                 <asp:TableHeaderCell Scope="Column" CssClass="text-nowrap">ID</asp:TableHeaderCell>

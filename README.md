@@ -38,31 +38,13 @@ You can consult this script at: [Database/schema.sql](./Database/schema.sql "Lin
 
 ## Prerequisites
 
-- PostgreSQL must be installed
+- PostgreSQL must be installed: https://www.postgresql.org/docs/
 
 ## ⚙️ Setup
 
-*To be documented.*
-
 1. Open a terminal and create the database `csvchecker` with PostgreSQL
 2. Create the table using the schema above
-
-### Windows and PowerShell
-
-
 3. Add a `.env` file at the root of the project containing database connection informations
-
-```powershell
-# .env
-
-$env:PGUSERNAME=[YOUR_PGUSERNAME_BETWEEN_QUOTES]
-$env:PGPASSWORD=[YOUR_PGPASSWORD_BETWEEN_QUOTES]
-```
-
-### Linux and Bash
-
-
-3. Add a `.env`file at the root of the project containing database connection informations
 
 ```bash
 # .env
@@ -76,8 +58,6 @@ PGPASSWORD=[YOUR_PGPASSWORD]
 ## ▶️ Usage
 
 Verify the docs part when the application is started.
-
---
 
 ## 🔑 License
 

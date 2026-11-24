@@ -7,7 +7,7 @@ CSV Checker is a web application designed to validate CSV files before a transfe
 **Frontend:**
 - **HTML** — Defines the structure and content of the web interface.
 - **CSS** — Handles the visual presentation and layout.
-- **JavaScript** — Provides client-side interactivity.
+- **JavaScript (via Bootstrap 5+)** — Provides client-side interactivity.
 
 **Backend:**
 - **VB.NET** — Implements the application logic, CSV processing, and business rule validation.
@@ -22,7 +22,7 @@ CSV Checker is a web application designed to validate CSV files before a transfe
 - **Git** — Version control.
 - **GitHub** — Source code hosting and project management.
 
-## Data
+## 📊 Data
 
 The app uses table of data `analysis_history` with the following informations :
 
@@ -36,7 +36,7 @@ The app uses table of data `analysis_history` with the following informations :
 
 You can consult this script at: [Database/schema.sql](./Database/schema.sql "Link to SQL file")
 
-## Prerequisites
+## 📋 Prerequisites
 
 - PostgreSQL must be installed: https://www.postgresql.org/docs/
 
